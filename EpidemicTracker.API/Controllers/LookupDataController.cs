@@ -68,8 +68,17 @@ namespace EpidemicTracker.API.Controllers
             return _context.TreatmentStatus.ToList();
 
         }
-    }
 
-      
+        [Route("getdiseasedetails")]
+        [HttpGet]
+        public IEnumerable<Disease> GetDisease()
+        {
+
+            return _context.Disease.ToList();
+
+        }
+
+
+    }   
     
 }

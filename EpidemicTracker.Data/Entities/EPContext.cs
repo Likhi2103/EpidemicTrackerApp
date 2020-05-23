@@ -8,7 +8,7 @@ namespace EpidemicTracker.Data.Entities
     public class EPContext : DbContext
     {
         public DbSet<OccupationType> OccupationType { get; set; }
-        public DbSet<Patient> User { get; set; }
+        public DbSet<Patient> Patient { get; set; }
         public DbSet<AddressType> AddressType { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<DiseaseType> DiseaseType { get; set; }

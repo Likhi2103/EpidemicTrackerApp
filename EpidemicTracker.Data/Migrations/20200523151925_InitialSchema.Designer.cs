@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EpidemicTracker.Data.Migrations
 {
     [DbContext(typeof(EPContext))]
-    [Migration("20200523065033_InitialSchema")]
+    [Migration("20200523151925_InitialSchema")]
     partial class InitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,9 +43,6 @@ namespace EpidemicTracker.Data.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EmailId")
-                        .HasColumnType("int");
-
                     b.Property<string>("HouseNo")
                         .HasColumnType("nvarchar(max)");
 
@@ -54,6 +51,9 @@ namespace EpidemicTracker.Data.Migrations
 
                     b.Property<string>("Locality")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Pincode")
                         .HasColumnType("int");
@@ -68,9 +68,6 @@ namespace EpidemicTracker.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserModified")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -79,7 +76,7 @@ namespace EpidemicTracker.Data.Migrations
 
                     b.HasIndex("AddressTypeId");
 
-                    b.HasIndex("EmailId");
+                    b.HasIndex("PatientId");
 
                     b.ToTable("Address");
                 });
@@ -387,7 +384,7 @@ namespace EpidemicTracker.Data.Migrations
 
                     b.HasIndex("OccupationTypeId");
 
-                    b.ToTable("User");
+                    b.ToTable("Patient");
                 });
 
             modelBuilder.Entity("EpidemicTracker.Data.Entities.Prescription", b =>
@@ -558,9 +555,11 @@ namespace EpidemicTracker.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EpidemicTracker.Data.Entities.Patient", "User")
+                    b.HasOne("EpidemicTracker.Data.Entities.Patient", "UserId")
                         .WithMany()
-                        .HasForeignKey("EmailId");
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EpidemicTracker.Data.Entities.HospitalStaff", b =>

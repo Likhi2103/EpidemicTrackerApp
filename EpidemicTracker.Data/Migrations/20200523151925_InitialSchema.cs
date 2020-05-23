@@ -141,7 +141,7 @@ namespace EpidemicTracker.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Patient",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -166,9 +166,9 @@ namespace EpidemicTracker.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Patient", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_OccupationType_OccupationTypeId",
+                        name: "FK_Patient_OccupationType_OccupationTypeId",
                         column: x => x.OccupationTypeId,
                         principalTable: "OccupationType",
                         principalColumn: "Id",
@@ -227,8 +227,7 @@ namespace EpidemicTracker.Data.Migrations
                     Pincode = table.Column<int>(nullable: false),
                     State = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
-                    EmailId = table.Column<int>(nullable: true),
+                    PatientId = table.Column<int>(nullable: false),
                     AddressTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -241,11 +240,11 @@ namespace EpidemicTracker.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Address_User_EmailId",
-                        column: x => x.EmailId,
-                        principalTable: "User",
+                        name: "FK_Address_Patient_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patient",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -289,9 +288,9 @@ namespace EpidemicTracker.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Treatment_User_PatientId",
+                        name: "FK_Treatment_Patient_PatientId",
                         column: x => x.PatientId,
-                        principalTable: "User",
+                        principalTable: "Patient",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -333,9 +332,9 @@ namespace EpidemicTracker.Data.Migrations
                 column: "AddressTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_EmailId",
+                name: "IX_Address_PatientId",
                 table: "Address",
-                column: "EmailId");
+                column: "PatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HospitalStaff_HospitalId",
@@ -346,6 +345,11 @@ namespace EpidemicTracker.Data.Migrations
                 name: "IX_HospitalStaff_StaffRoleId",
                 table: "HospitalStaff",
                 column: "StaffRoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patient_OccupationTypeId",
+                table: "Patient",
+                column: "OccupationTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Prescription_TreatmentId",
@@ -371,11 +375,6 @@ namespace EpidemicTracker.Data.Migrations
                 name: "IX_Treatment_TreatmentStatusId",
                 table: "Treatment",
                 column: "TreatmentStatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_OccupationTypeId",
-                table: "User",
-                column: "OccupationTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -402,7 +401,7 @@ namespace EpidemicTracker.Data.Migrations
                 name: "HospitalStaff");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Patient");
 
             migrationBuilder.DropTable(
                 name: "TreatmentStatus");

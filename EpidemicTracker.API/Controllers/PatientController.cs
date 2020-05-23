@@ -13,29 +13,26 @@ namespace EpidemicTracker.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HospitalController : ControllerBase
+    public class PatientController : ControllerBase
     {
-        private ILogger<HospitalController> _logger;
+        private ILogger<PatientController> _logger;
 
         private EPContext _context;
 
-        public HospitalController(ILogger<HospitalController> logger, EPContext context)
+        public PatientController(ILogger<PatientController> logger, EPContext context)
         {
             _logger = logger;
             _context = context;
         }
 
-        //public Hospital AddHospital (Hospital hospital)
-        //{
-        //    Hospital
-        //}
-        [Route("addhospital")]
+
+        [Route("addpatient")]
         [HttpPost]
-        public Hospital AddHospital([FromBody] Hospital hospital)
+        public Patient AddTreatment([FromBody] Patient patient)
         {
-            _context.Hospital.Add(hospital);
+            _context.Patient.Add(patient);
             _context.SaveChanges();
-            return hospital;
+            return patient;
         }
     }
 }

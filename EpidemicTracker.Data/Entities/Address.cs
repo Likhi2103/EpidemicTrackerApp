@@ -8,9 +8,7 @@ namespace EpidemicTracker.Data.Entities
 {
     public class Address : BaseEntity
     {
-        //[Key]
-        //[Required]
-        //public new int Id { get; set; }
+       
 
         public string HouseNo { get; set; }
 
@@ -24,10 +22,10 @@ namespace EpidemicTracker.Data.Entities
         public string State { get; set; }
 
         public string Country { get; set; }
-        public int UserId { get; set; }
+        public int PatientId { get; set; }
+        [ForeignKey("PatientId")]
+        public Patient UserId { get; set; }
 
-        [ForeignKey("EmailId")]
-        public Patient User { get; set; }
         public int AddressTypeId { get; set; }
 
         [ForeignKey("AddressTypeId")]
