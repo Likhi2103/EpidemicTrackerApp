@@ -19,6 +19,7 @@ namespace EpidemicTracker.Data.Entities
         public string Locality { get; set; }
 
         public string City { get; set; }
+        public int Pincode { get; set; }
 
         public string State { get; set; }
 
@@ -26,7 +27,7 @@ namespace EpidemicTracker.Data.Entities
         public int UserId { get; set; }
 
         [ForeignKey("EmailId")]
-        public User User { get; set; }
+        public Patient User { get; set; }
         public int AddressTypeId { get; set; }
 
         [ForeignKey("AddressTypeId")]

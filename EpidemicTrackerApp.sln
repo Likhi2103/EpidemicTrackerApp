@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EpidemicTracker.Data", "EpidemicTracker.Data\EpidemicTracker.Data.csproj", "{545615AF-B048-4E46-8BD1-0BF7CEF5A7EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpidemicTracker.API", "EpidemicTracker.API\EpidemicTracker.API.csproj", "{519CE848-C542-4D31-BD32-FBC020B08534}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{545615AF-B048-4E46-8BD1-0BF7CEF5A7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{545615AF-B048-4E46-8BD1-0BF7CEF5A7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{545615AF-B048-4E46-8BD1-0BF7CEF5A7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{519CE848-C542-4D31-BD32-FBC020B08534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519CE848-C542-4D31-BD32-FBC020B08534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519CE848-C542-4D31-BD32-FBC020B08534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519CE848-C542-4D31-BD32-FBC020B08534}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

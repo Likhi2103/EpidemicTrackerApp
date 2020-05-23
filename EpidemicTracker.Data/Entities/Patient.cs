@@ -8,11 +8,13 @@ namespace EpidemicTracker.Data.Entities
 {
     public class Patient : BaseEntity
     {
-        [Key]
+        //public new int Id { get; set; }
         [Required]
-        public new int Id { get; set; }
+        public string UserName { get; set; }
         [Required]
-        public string PatientName { get; set; }
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
         [Required]
         public string Gender { get; set; }
         [Required]
@@ -20,15 +22,11 @@ namespace EpidemicTracker.Data.Entities
         [Required]
         public string EmailId { get; set; }
         [Required]
+        public string Password { get; set; }
+        [Required]
         public string PhoneNo { get; set; }
         [Required]
         public string GovernmentIdNo { get; set; }
-        public int AddressTypeId { get; set; }
-        [ForeignKey("AddressTypeId")]
-        public AddressType AddressType { get; set; }
-        public int DiseaseTypeId { get; set; }
-        [ForeignKey("DiseaseTypeId")]
-        public DiseaseType DiseaseType { get; set; }
         public int OccupationTypeId { get; set; }
         [ForeignKey("OccupationTypeId")]
         public OccupationType OccupationType { get; set; }
