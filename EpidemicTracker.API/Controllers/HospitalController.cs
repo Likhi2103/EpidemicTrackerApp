@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EpidemicTracker.API.ViewModels;
 using EpidemicTracker.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,11 +32,50 @@ namespace EpidemicTracker.API.Controllers
         //}
         [Route("addhospital")]
         [HttpPost]
-        public Hospital AddHospital([FromBody] Hospital hospital)
+        public HospitalStaffViewModel AddHospitalStaff([FromBody] HospitalStaffViewModel hospitalStaffViewModel)
         {
-            _context.Hospital.Add(hospital);
+            HospitalStaff hospitalStaff = new HospitalStaff()
+            {
+                IsActive = true,
+                DateCreated = DateTime.UtcNow,
+                DateModified = DateTime.UtcNow,
+                UserCreated = hospitalStaffViewModel.StaffName,
+                UserModified = hospitalStaffViewModel.StaffName,
+                StaffName = hospitalStaffViewModel.StaffName,
+                UserName = hospitalStaffViewModel.UserName,
+                FirstName = hospitalStaffViewModel.Firstname,
+                LastName = hospitalStaffViewModel.Lastname,
+                Age = hospitalStaffViewModel.Age,
+                Gender = hospitalStaffViewModel.Gender,
+                PhoneNo = hospitalStaffViewModel.PhoneNo,
+                GovernmentIdNo = hospitalStaffViewModel.GovernmentIdNo,
+                EmailId = hospitalStaffViewModel.EmailId,
+                Password = hospitalStaffViewModel.Password,
+                HospitalId = hospitalStaffViewModel.HospitalId,
+                StaffRoleId = hospitalStaffViewModel.StaffRoleId,
+
+                AddressLine = hospitalStaffViewModel.AddressLine,
+                Area = hospitalStaffViewModel.Area,
+                City = hospitalStaffViewModel.City,
+                State = hospitalStaffViewModel.State,
+                Country = hospitalStaffViewModel.Country,
+                Pincode = hospitalStaffViewModel.Pincode,                
+                
+            };
+
+
+            _context.HospitalStaff.Add(hospitalStaff);
             _context.SaveChanges();
-            return hospital;
+
+
+            hospitalStaffViewModel.Id = hospitalStaff.Id;
+            hospitalStaffViewModel.HospitalId = hospitalStaff.HospitalId;
+            hospitalStaffViewModel.StaffRoleId = hospitalStaff.StaffRoleId;
+
+
+
+            return hospitalStaffViewModel;
+
         }
     }
 }

@@ -4,14 +4,16 @@ using EpidemicTracker.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EpidemicTracker.Data.Migrations
 {
     [DbContext(typeof(EPContext))]
-    partial class EPContextModelSnapshot : ModelSnapshot
+    [Migration("20200524150847_UpdatedHospitalStaff")]
+    partial class UpdatedHospitalStaff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
